@@ -21,34 +21,28 @@
  	background-color: var(--cor-principal);
  	box-sizing: border-box;
 	
-	
  }
  .menu ul li a{
  	width: 100%;
  	text-decoration: none;
  	color: white;
  	padding-left: 4px;
- 	transition: 1s all;
- 	font-size: 1.2em;	
+ 	transition: 0.51s all;
+ 	font-size: 1.2em;
 	
  }
  .menu{
  	box-sizing: border-box;
  }
- .menu a:hover,#emprestar,#acervo,#cadastrar,#home{
+ .menu a:hover,.home,.emprestar{
  	color: black;
- 	transition: 1s all;
- 	font-size: 1.6em;
-	
+ 	transition: 0.51s all;
+ 	font-size: 1.5em;
  	font-family: var(--fonte-kanit);
-	
+	 border-bottom: 1px solid white;
 		
  }
- #emprestar,#acervo,#cadastrar,#home{
- 	border-bottom: 1px solid white;
- 	transition: 1s;
-	
- }
+ 
  .menu ul li{
  	margin-left: 0.5em;
  	display: inline;
