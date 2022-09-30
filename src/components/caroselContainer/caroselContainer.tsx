@@ -46,7 +46,7 @@ export default function CaroselContainer(){
                 {Livro.map((item)=>(
                     <Card style={{ width: '18rem' }}>
                     <Card.Img className="img-carrosel" variant="top" src={item.src} />
-                    <Card.Body>
+                    <Card.Body className='body-carrosel'>
                         <Card.Title>{item.titulo}</Card.Title>
                             <Card.Text>
                                 {item.descricao}
@@ -62,7 +62,7 @@ export default function CaroselContainer(){
                 {Livro.map((item)=>(
                         <Card style={{ width: '18rem' }}>
                         <Card.Img className="img-carrosel" variant="top" src={item.src} />
-                        <Card.Body>
+                        <Card.Body className='body-carrosel'>
                             <Card.Title>{item.titulo}</Card.Title>
                                 <Card.Text>
                                     {item.descricao}
