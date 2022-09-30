@@ -1,0 +1,37 @@
+.container-historico{
+    margin: 2em auto;
+    width: 100%;
+    height: 57vh;
+    text-align: center;
+
+}
+.tabela-historico{
+    margin: 2em auto;
+    width: 90%;
+    
+} 
+
+.tabela-historico__thead{
+    font-size: 1.3em;
+    font-weight: 700;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    width: 100%;
+    
+}
+
+th{
+    padding: 0.5em;
+}
+.form__input{
+    padding: 0.5em;
+}
+.input-pesquisar{
+    background-color: var(--cor-principal);
+	color: white;
+	font-size: 1em;
+    border: none;
+    padding: 0.5em;
+    border-radius: 3px;
+}
