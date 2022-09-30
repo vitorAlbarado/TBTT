@@ -34,7 +34,7 @@
  .menu{
  	box-sizing: border-box;
  }
- .menu a:hover,.home,.emprestar{
+ .menu a:hover, #home,#emprestar,#cadastrar,#acervo,#historico{
  	color: black;
  	transition: 0.51s all;
  	font-size: 1.5em;
@@ -42,6 +42,7 @@
 	 border-bottom: 1px solid white;
 		
  }
+
  
  .menu ul li{
  	margin-left: 0.5em;
