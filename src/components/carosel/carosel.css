@@ -1,7 +1,8 @@
 .caroselHome{
-   width: 90%;
+   width: 70%;
    margin: 2em auto;
+   box-shadow: 5px 5px 10px 2px #ccc;
 }
 .video{
-    height: 485px;
+    
 }

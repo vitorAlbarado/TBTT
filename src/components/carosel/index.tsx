@@ -31,6 +31,7 @@ export default function Carosel() {
 				</Carousel.Item>
 				<Carousel.Item>
 					<iframe 
+					style={{height:'400px'}}
 						className="d-block w-100 embed-responsive embed-responsive-16by9 video"
 						src="https://www.youtube.com/embed/TnWwDYbgweg" 
 						title="YouTube video player" 
