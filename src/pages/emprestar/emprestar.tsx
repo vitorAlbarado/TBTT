@@ -6,7 +6,7 @@ export default function Emprestar(){
     return(
         <>
             <Cabecalho ativo="emprestar"/>
-            <Formulario label1="Matriculca" label2="Nome" label3="Turma" label4="Id livro" label5="Titulo"/>
+            <Formulario />
             <Footer/>
         </>
     )

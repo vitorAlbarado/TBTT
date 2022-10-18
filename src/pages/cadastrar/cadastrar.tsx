@@ -6,7 +6,7 @@ export default function(){
     return(
         <>
             <Cabecalho ativo="cadastrar"/>
-            <Formulario label1="Id Livro" label2="Titulo" label3="Autor" label4="Editora" label5="Data lançamento"/>
+            <Formulario />
             <Footer/>
         </>
     )
