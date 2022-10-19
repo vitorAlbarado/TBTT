@@ -1,4 +1,4 @@
-import './caroselContainer.css'
+import styles from './caroselContainer.module.scss';
 import GuiaFrontEnd from '../../assets/img/Guia Front-end.png'
 import ApacheKafka from '../../assets/img/ApacheKafka.png'
 import javascript from '../../assets/img/Javascript.png'
@@ -40,13 +40,13 @@ const Livro: Array<livro>=[
 export default function CaroselContainer(){
     
     return(
-        <section className="caroselContainer">
-			<h2 className="container-secoes__titulo">Mais Populares</h2>
-			<section className="container-secoes">
+        <section className={styles.caroselContainer}>
+			<h2 className={styles.caroselContainer__titulo}>Mais Populares</h2>
+			<section className={styles.caroselContainer__secoes}>
                 {Livro.map((item)=>(
                     <Card style={{ width: '18rem' }}>
-                    <Card.Img className="img-carrosel" variant="top" src={item.src} />
-                    <Card.Body className='body-carrosel'>
+                    <Card.Img className={styles.caroselContainer__secoes__img} variant="top" src={item.src} />
+                    <Card.Body className={styles.caroselContainer__secoes__body}>
                         <Card.Title>{item.titulo}</Card.Title>
                             <Card.Text>
                                 {item.descricao}
@@ -57,12 +57,12 @@ export default function CaroselContainer(){
                 ))}
             </section> 
 
-            <h2 className="container-secoes__titulo">Ciência e Matemática</h2>
-			<section className="container-secoes">
+            <h2 className={styles.caroselContainer}>Ciência e Matemática</h2>
+			<section className={styles.caroselContainer__secoes}>
                 {Livro.map((item)=>(
                         <Card style={{ width: '18rem' }}>
-                        <Card.Img className="img-carrosel" variant="top" src={item.src} />
-                        <Card.Body className='body-carrosel'>
+                        <Card.Img className={styles.caroselContainer__secoes__img} variant="top" src={item.src} />
+                        <Card.Body className={styles.caroselContainer__secoes__body}>
                             <Card.Title>{item.titulo}</Card.Title>
                                 <Card.Text>
                                     {item.descricao}

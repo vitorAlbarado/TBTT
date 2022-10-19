@@ -1,8 +1,9 @@
+@import '../../styles/variaveis';
 .footer{
 	width: auto;
 	text-align:center;
 	margin-top: 2em;
-	background-color: var(--cor-principal);
+	background-color: $cor-principal;
 	color: #bbbb;
 	padding: 0.5em;
 	height: 20%;

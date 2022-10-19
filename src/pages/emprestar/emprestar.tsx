@@ -1,7 +1,7 @@
 import Cabecalho from "../../components/cabecalho"
 import Footer from "../../components/footer/footer"
 import Formulario from "../../components/formulario/formulario"
-import './emprestar.css'
+import styles from './Emprestar.module.scss';
 export default function Emprestar(){
     return(
         <>

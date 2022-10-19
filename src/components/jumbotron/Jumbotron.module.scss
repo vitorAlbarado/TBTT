@@ -1,0 +1,9 @@
+.jumbotron{
+    background: rgb(221, 241, 237);
+    &__genero{
+        margin-top: 2rem;
+        padding-bottom: 1em;
+        display: flex;
+        justify-content: space-around;
+    }
+}

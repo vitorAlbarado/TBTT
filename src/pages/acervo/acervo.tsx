@@ -1,35 +1,36 @@
 import Cabecalho from '../../components/cabecalho'
 import Footer from '../../components/footer/footer'
-import './acervo.css'
+import styles from './Acervo.module.scss';
+
 export default function Acervo(){
     return (
         <>
         <Cabecalho ativo="acervo"/>
-        <section className="container-historico">
-		    <input className="form__input" id="pesquisar__input" type="text" placeholder="Informe o ID"/>
-		    <input className="input-pesquisar" type="submit" value="Pesquisar"/>
-		<table className="tabela-historico">
-			<thead className="tabela-historico__thead">
-					<th >ID Livro</th>
-					<th >Titulo Livro</th>
-					<th >Autor</th>
-					<th >Editora</th>
-			</thead>
-			<tbody className="tabela-historico__body">
-				<tr>
-					<td>texto</td>
-					<td>texto</td>
-					<td>texto</td>
-					<td>texto</td>
-				</tr>
-				<tr>
-					<td>texto</td>
-					<td>texto</td>
-					<td>texto</td>
-					<td>texto</td>
-				</tr>
-			</tbody>
-		</table>
+        <section className={styles.container}>
+		    <input className={styles.container__input} id="pesquisar__input" type="text" placeholder="Informe o ID"/>
+		    <input className={styles.container__pesquisar} type="submit" value="Pesquisar"/>
+			<table className={styles.container__tabela}>
+				<thead className={styles.container__tabela__thead}>
+						<th >ID Livro</th>
+						<th >Titulo Livro</th>
+						<th >Autor</th>
+						<th >Editora</th>
+				</thead>
+				<tbody className="tabela-historico__body">
+					<tr>
+						<td>texto</td>
+						<td>texto</td>
+						<td>texto</td>
+						<td>texto</td>
+					</tr>
+					<tr>
+						<td>texto</td>
+						<td>texto</td>
+						<td>texto</td>
+						<td>texto</td>
+					</tr>
+				</tbody>
+			</table>
 	</section>
     <Footer/>
         </>
