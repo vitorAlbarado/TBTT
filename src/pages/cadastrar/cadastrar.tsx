@@ -1,13 +1,7 @@
-import Cabecalho from "../../components/cabecalho";
-import Footer from "../../components/footer/footer";
 import Formulario from "../../components/formulario/formulario";
 
-export default function(){
+export default function Cadastrar(){
     return(
-        <>
-            <Cabecalho ativo="cadastrar"/>
             <Formulario />
-            <Footer/>
-        </>
     )
 }

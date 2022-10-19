@@ -1,10 +1,6 @@
-import Cabecalho from '../../components/cabecalho'
-import Footer from '../../components/footer/footer'
 import styles from '../acervo/Acervo.module.scss';
 export default function Historico(){
     return(
-        <>
-        <Cabecalho ativo="acervo"/>
         <section className={styles.container}>
 		    <input className={styles.container__input} id="pesquisar__input" type="text" placeholder="Informe o ID"/>
 		    <input className={styles.container__pesquisar} type="submit" value="Pesquisar"/>
@@ -31,7 +27,5 @@ export default function Historico(){
 				</tbody>
 			</table>
 	</section>
-    <Footer/>
-        </>
     )
 }
