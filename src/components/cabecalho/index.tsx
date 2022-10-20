@@ -1,26 +1,49 @@
 import style from './Cabecalho.module.scss';
 import logo from '../../assets/img/logo.png'
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
+import Dropdown from 'react-bootstrap/Dropdown';
 
-interface Props{
-	ativo?:string
-}
-export default function Cabecalho(porps:Props){
 
+export default function Cabecalho(){
+	const link = [
+		{
+		to:'/',
+		label:'Home'},
+		{
+		to:'/emprestar',
+		label:'Emprestar'},
+		{
+		to:'/cadastrar',
+		label:'Cadastrar'},
+		{
+		to:'/acervo',
+		label:'Acervo'},
+		{
+		to:'/historico',
+		label:'Historico'},		
+		]
     return(
         <header className={style.header}>
-			<section className={style.header__cabecalho}>
-			<h1><a href="#"><img src={logo} style={{width:"150px"}} alt="Logo da Empresa"/></a></h1>
+			<Dropdown className={style.dropDown}>
+				<Dropdown.Toggle variant="secondary" id="dropdown-basic">
+					Menu
+				</Dropdown.Toggle>
+			<Dropdown.Menu variant="dark">
+				{link.map((item, index)=>(
+					<Dropdown.Item><li key={index} className={style.menu__link}><Link  to={item.to}>{item.label}</Link></li></Dropdown.Item>	
+				))}
+				</Dropdown.Menu>
+			</Dropdown>
+			<a href="/"><img className={style.header__img} src={logo}  alt="Logo da Empresa"/></a>
 				<nav className={style.menu}>
 					<ul className={style.menu__list}>
-						<li className={style.menu__link}><Link to="/" id={porps.ativo ==='home' ? porps.ativo:''}>Home</Link></li>
-						<li className={style.menu__link}><Link to="/emprestar" id={porps.ativo ==='emprestar' ? porps.ativo:''}>Emprestar</Link></li>						
-						<li className={style.menu__link}><Link to="/cadastrar" id={porps.ativo ==='cadastrar' ? porps.ativo:''}>Cadastrar</Link></li>
-						<li className={style.menu__link}><Link to="/acervo" id={porps.ativo ==='acervo' ? porps.ativo:''}>Acervo</Link></li>
-						<li className={style.menu__link}><Link to="/historico"id={porps.ativo ==='historico' ? porps.ativo:''}>Historico</Link></li>
+						{link.map((item, index)=>(
+						<li key={index} className={style.menu__link}><Link  to={item.to}>{item.label}</Link></li>	
+						))}
+						
 					</ul>
 				</nav>
-			</section>
+			
 		</header>
     );
 }

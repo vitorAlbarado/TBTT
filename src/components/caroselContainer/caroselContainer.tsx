@@ -44,7 +44,7 @@ export default function CaroselContainer(){
 			<h2 className={styles.caroselContainer__titulo}>Mais Populares</h2>
 			<section className={styles.caroselContainer__secoes}>
                 {Livro.map((item)=>(
-                    <Card style={{ width: '18rem' }}>
+                    <Card className={styles.caroselContainer__secoes__card}>
                     <Card.Img className={styles.caroselContainer__secoes__img} variant="top" src={item.src} />
                     <Card.Body className={styles.caroselContainer__secoes__body}>
                         <Card.Title>{item.titulo}</Card.Title>
@@ -57,10 +57,10 @@ export default function CaroselContainer(){
                 ))}
             </section> 
 
-            <h2 className={styles.caroselContainer}>Ciência e Matemática</h2>
+            <h2 className={styles.caroselContainer__titulo}>Ciência e Matemática</h2>
 			<section className={styles.caroselContainer__secoes}>
                 {Livro.map((item)=>(
-                        <Card style={{ width: '18rem' }}>
+                        <Card  className={styles.caroselContainer__secoes__card}>
                         <Card.Img className={styles.caroselContainer__secoes__img} variant="top" src={item.src} />
                         <Card.Body className={styles.caroselContainer__secoes__body}>
                             <Card.Title>{item.titulo}</Card.Title>

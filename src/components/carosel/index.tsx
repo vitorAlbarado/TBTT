@@ -29,15 +29,6 @@ export default function Carosel() {
 					alt="Third slide"
 					/>
 				</Carousel.Item>
-				<Carousel.Item>
-					<iframe 
-					style={{height:'400px'}}
-						className="d-block w-100 embed-responsive embed-responsive-16by9 video"
-						src="https://www.youtube.com/embed/TnWwDYbgweg" 
-						title="YouTube video player" 
-						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-					/>
-				</Carousel.Item>
 			</Carousel>
 		</section>
     )

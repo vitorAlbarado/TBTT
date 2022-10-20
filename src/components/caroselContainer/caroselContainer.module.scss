@@ -1,10 +1,13 @@
 @import '../../styles/variaveis';
+@import '../../styles/breakPoints';
+
 .caroselContainer{
     display: flex;
     flex-direction: column;
-    margin: 3em auto;
+    margin: 1em auto;
+    padding: 1em;
+    font-family: $fonte-kanit;
     &__titulo{
-        font-family: $fonte-kanit;
         text-align: center;
         margin: 1em 0;
     }
@@ -12,6 +15,9 @@
         display: flex;
         column-gap: 1em;
         justify-content: center;
+        &__card{
+            width: 40%;
+        } 
         &__img{
             box-shadow:  2px 2px rgb(117, 115, 115);
             width: 80%;
@@ -25,6 +31,20 @@
     
     
 }
+@media (max-width: $mobile){
+    .caroselContainer__secoes{
+        flex-wrap: wrap;
+        gap: 1em;
+        &__card{
+            width: 300px;
+        }     
+        &__img{
+            width: 60%;
+        }
+    }
+    
+}
+
 
 
 

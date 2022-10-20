@@ -31,7 +31,7 @@ interface Props{
 }
 
 export default function Formulario(props:Props){
-    const {register, handleSubmit, watch, formState:{errors}} = useForm<Props>({
+    const {register, handleSubmit, formState:{errors}} = useForm<Props>({
         resolver: yupResolver(schema)
       });
     function criaEmprestimos(emprestimo:Props){
@@ -47,22 +47,22 @@ export default function Formulario(props:Props){
                 </div>
                 <div className={styles.form__field__box}>
                     <label>{props.label2}</label>
-                    <input className={styles.form__field__box__input} type="text" placeholder="Nome do aluno" {...register("nomeAluno",{required:true})}  />
+                    <input className={styles.form__field__box__input} type="text" placeholder="" {...register("nomeAluno",{required:true})}  />
                     <span style={{color:"red"}}>{errors.nomeAluno?.message}</span>
                 </div>
                 <div className={styles.form__field__box}>
                     <label>{props.label3}</label>
-                    <input className={styles.form__field__box__input} type="text" placeholder="Turma do aluno" {...register("turmaAluno")} />
+                    <input className={styles.form__field__box__input} type="text" placeholder="" {...register("turmaAluno")} />
                     <span style={{color:"red"}}>{errors.turmaAluno?.message}</span>
                 </div>
                 <div className={styles.form__field__box}>
                     <label>{props.label4}</label>
-                    <input className={styles.form__field__box__input} type="text" placeholder="ID Livro" {...register("idLivro")} />
+                    <input className={styles.form__field__box__input} type="text" placeholder="" {...register("idLivro")} />
                     <span style={{color:"red"}}>{errors.idLivro?.message}</span>
                 </div>
                 <div className={styles.form__field__box}>
                     <label>{props.label5}</label>
-                    <input className={styles.form__field__box__input} type="text"  placeholder="Titulo do Livro" {...register("tituloLivro")} />
+                    <input className={styles.form__field__box__input} type="text"  placeholder="" {...register("tituloLivro")} />
                     <span style={{color:"red"}}>{errors.tituloLivro?.message}</span>
                 </div> 
                 <input 

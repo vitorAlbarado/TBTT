@@ -1,5 +1,13 @@
+@import "../../styles/breakPoints";
+@import "../../styles/variaveis";
+
 .caroselHome{
    width: 70%;
-   margin: 2em auto;
+   margin: 3em auto;
    box-shadow: 5px 5px 10px 2px #ccc;
+   @media (max-width: $mobile){
+      width: 100%;
+      margin: 1em 0;
+   }
+   
 }
