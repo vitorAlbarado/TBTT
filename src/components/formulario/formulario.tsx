@@ -26,7 +26,14 @@ interface Props{
     label4?:string,
     type?:string,
     placeholder?:string
-    name?:string
+    name?:string,
+    placeHolder:{
+        ph1:string,
+        ph2:string,
+        ph3:string,
+        ph4:string,
+        ph5:string,
+    }
 
 }
 
@@ -42,27 +49,27 @@ export default function Formulario(props:Props){
             <fieldset className={styles.form__field}>
                 <div className={styles.form__field__box}>
                     <label className="">{props.label1}</label>
-                    <input className={styles.form__field__box__input} type="text" placeholder="" {...register("matriculaAluno", {required:true})}/>
+                    <input className={styles.form__field__box__input} type="text" placeholder={props.placeHolder.ph1} {...register("matriculaAluno", {required:true})}/>
                     <span style={{color:"red"}}>{errors.matriculaAluno?.message}</span>
                 </div>
                 <div className={styles.form__field__box}>
                     <label>{props.label2}</label>
-                    <input className={styles.form__field__box__input} type="text" placeholder="" {...register("nomeAluno",{required:true})}  />
+                    <input className={styles.form__field__box__input} type="text" placeholder={props.placeHolder.ph2} {...register("nomeAluno",{required:true})}  />
                     <span style={{color:"red"}}>{errors.nomeAluno?.message}</span>
                 </div>
                 <div className={styles.form__field__box}>
                     <label>{props.label3}</label>
-                    <input className={styles.form__field__box__input} type="text" placeholder="" {...register("turmaAluno")} />
+                    <input className={styles.form__field__box__input} type="text" placeholder={props.placeHolder.ph3} {...register("turmaAluno")} />
                     <span style={{color:"red"}}>{errors.turmaAluno?.message}</span>
                 </div>
                 <div className={styles.form__field__box}>
                     <label>{props.label4}</label>
-                    <input className={styles.form__field__box__input} type="text" placeholder="" {...register("idLivro")} />
+                    <input className={styles.form__field__box__input} type="text" placeholder={props.placeHolder.ph4} {...register("idLivro")} />
                     <span style={{color:"red"}}>{errors.idLivro?.message}</span>
                 </div>
                 <div className={styles.form__field__box}>
                     <label>{props.label5}</label>
-                    <input className={styles.form__field__box__input} type="text"  placeholder="" {...register("tituloLivro")} />
+                    <input className={styles.form__field__box__input} type={props.placeHolder.ph5 === '' ? 'date':'text'}  placeholder={props.placeHolder.ph5} {...register("tituloLivro")} />
                     <span style={{color:"red"}}>{errors.tituloLivro?.message}</span>
                 </div> 
                 <input 
