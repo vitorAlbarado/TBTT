@@ -30,14 +30,16 @@
 			color: white;
 			transition: 0.51s all;
 			font-size: 1.2em;
-			&:hover,&:active{
-				color: black;
+			&:hover{
+				//color: black;
 				transition: 0.51s all;
 				font-size: 1.5em;
 				font-family: $fonte-kanit;
 				border-bottom: 1px solid white;
-				
 			}
+		}
+		&__ativo{
+			border-bottom: 2px solid black;
 		}
 	}
 }

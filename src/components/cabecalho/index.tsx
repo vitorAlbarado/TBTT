@@ -2,9 +2,10 @@ import style from './Cabecalho.module.scss';
 import logo from '../../assets/img/logo.png'
 import { Link} from "react-router-dom";
 import Dropdown from 'react-bootstrap/Dropdown';
+import classNames from 'classnames';
 
 
-export default function Cabecalho(){
+export default function Cabecalho(props:any){
 	const link = [
 		{
 		to:'/',
@@ -38,7 +39,9 @@ export default function Cabecalho(){
 				<nav className={style.menu}>
 					<ul className={style.menu__list}>
 						{link.map((item, index)=>(
-						<li key={index} className={style.menu__link}><Link  to={item.to}>{item.label}</Link></li>	
+						<li key={index} 
+						className={style.menu__link}>
+						<Link className={props.pageAtiva == item.to ? style.menu__link__ativo:''}  to={item.to}>{item.label}</Link></li>	
 						))}
 						
 					</ul>
