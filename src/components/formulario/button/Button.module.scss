@@ -1,0 +1,10 @@
+@import '../../../styles/variaveis';
+.button{
+    background-color: $cor-principal;
+    color: white;
+    border-radius: 6px;
+    font-size: 1.1em;
+    padding: 0.5em;
+    width: 150px;
+    border: none;
+}
