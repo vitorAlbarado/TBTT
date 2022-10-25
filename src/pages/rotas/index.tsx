@@ -4,8 +4,6 @@ import Cadastrar from "../cadastrar/cadastrar";
 import Acervo from "../acervo/acervo";
 import Historico from "../historico/historico";
 import Home from "pages/home/home";
-import Cabecalho from "components/cabecalho";
-import Footer from "components/footer/footer";
 import PaginaPadrao from "pages/paginaPadrao/paginaPadrao";
 
 export default function Rotas(){
@@ -27,7 +25,7 @@ export default function Rotas(){
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<PaginaPadrao/>}>
-                    <Route index element={<Home/>} />
+                <Route index element={<Home/>} />
                 <Route path="/emprestar" element={<Emprestar/>}/>
                 <Route path="/cadastrar" element={<Cadastrar/>}/>
                 <Route path="/acervo" element={<Acervo/>}/>
