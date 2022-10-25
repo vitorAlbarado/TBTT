@@ -2,7 +2,6 @@ import style from './Cabecalho.module.scss';
 import logo from '../../assets/img/logo.png'
 import { Link} from "react-router-dom";
 import Dropdown from 'react-bootstrap/Dropdown';
-import classNames from 'classnames';
 
 
 export default function Cabecalho(props:any){
@@ -41,7 +40,7 @@ export default function Cabecalho(props:any){
 						{link.map((item, index)=>(
 						<li key={index} 
 						className={style.menu__link}>
-						<Link className={props.pageAtiva == item.to ? style.menu__link__ativo:''}  to={item.to}>{item.label}</Link></li>	
+						<Link className={props.pageAtiva === item.to ? style.menu__link__ativo:''}  to={item.to}>{item.label}</Link></li>	
 						))}
 						
 					</ul>

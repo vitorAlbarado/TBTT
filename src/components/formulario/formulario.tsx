@@ -1,83 +1,44 @@
-import {useForm} from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from "yup";
-import styles from './Formulario.module.scss';
-
-
-const schema = yup.object({
-    matriculaAluno: yup.number().required("Informe a matricula"),
-    nomeAluno:yup.string().required("Informe o nome"),
-    turmaAluno:yup.string().required("Informe a turma"),
-    idLivro:yup.string().required("Id do livro obrigatorio"),
-    tituloLivro:yup.string()
-}).required();
-
-
-interface Props{
-    matriculaAluno?:string,
-    nomeAluno?:string,
-    turmaAluno?:string;
-    idLivro?:number,
-    tituloLivro?:string,
-    label1?:string,
-    label2?:string,
-    label3?:string,
-    label5?:string,
-    label4?:string,
-    type?:string,
-    placeholder?:string
-    name?:string,
-    placeHolder:{
-        ph1:string,
-        ph2:string,
-        ph3:string,
-        ph4:string,
-        ph5:string,
-    }
-
+export function de(){
+    return(<></>)
 }
+// import {useForm, SubmitHandler} from 'react-hook-form'
+// import { yupResolver } from '@hookform/resolvers/yup';
+// import * as yup from "yup";
+// import styles from './Formulario.module.scss';
+// import Input from './input';
+// import Button from './button';
 
-export default function Formulario(props:Props){
-    const {register, handleSubmit, formState:{errors}} = useForm<Props>({
-        resolver: yupResolver(schema)
-      });
-    function criaEmprestimos(emprestimo:Props){
-        console.log(emprestimo)
-    }
-    return (
-        <form className={styles.form} onSubmit={handleSubmit(criaEmprestimos)}>
-            <fieldset className={styles.form__field}>
-                <div className={styles.form__field__box}>
-                    <label className="">{props.label1}</label>
-                    <input className={styles.form__field__box__input} type="text" placeholder={props.placeHolder.ph1} {...register("matriculaAluno", {required:true})}/>
-                    <span style={{color:"red"}}>{errors.matriculaAluno?.message}</span>
-                </div>
-                <div className={styles.form__field__box}>
-                    <label>{props.label2}</label>
-                    <input className={styles.form__field__box__input} type="text" placeholder={props.placeHolder.ph2} {...register("nomeAluno",{required:true})}  />
-                    <span style={{color:"red"}}>{errors.nomeAluno?.message}</span>
-                </div>
-                <div className={styles.form__field__box}>
-                    <label>{props.label3}</label>
-                    <input className={styles.form__field__box__input} type="text" placeholder={props.placeHolder.ph3} {...register("turmaAluno")} />
-                    <span style={{color:"red"}}>{errors.turmaAluno?.message}</span>
-                </div>
-                <div className={styles.form__field__box}>
-                    <label>{props.label4}</label>
-                    <input className={styles.form__field__box__input} type="text" placeholder={props.placeHolder.ph4} {...register("idLivro")} />
-                    <span style={{color:"red"}}>{errors.idLivro?.message}</span>
-                </div>
-                <div className={styles.form__field__box}>
-                    <label>{props.label5}</label>
-                    <input className={styles.form__field__box__input} type={props.placeHolder.ph5 === '' ? 'date':'text'}  placeholder={props.placeHolder.ph5} {...register("tituloLivro")} />
-                    <span style={{color:"red"}}>{errors.tituloLivro?.message}</span>
-                </div> 
-                <input 
-                    className={styles.form__field__input}  
-                    type="submit" 
-                    value="Emprestar"
-                />
-            </fieldset>
-		</form>
-    )
-}
+
+
+// type Props = {
+//     children: React.ReactNode;
+// }
+// type Dados={
+//     inputElement?:any
+//     // input:{
+//     //     name1:string,
+//     //     ph1:string,
+//     //     name2:string,
+//     //     ph2:string,
+//     //     name3:string,
+//     //     ph3:string,
+//     //     name4:string,
+//     //     ph4:string,
+//     //     name5:string,
+//     //     ph5:string,
+//     //     typeText:string,
+//     // }
+// }
+
+// export default function Formulario ({children}:Props){
+//     const {register, handleSubmit, formState:{errors}} = useForm<Dados>();
+//     const onSubmit: SubmitHandler<Dados> = data => console.log(data);
+//     return (
+//         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+//             <fieldset className={styles.form__field}>
+//                 <Input inputName={input.name1} ph={input.ph1} typeText={input.typeText} register={register}/>
+//             </fieldset>
+// 		</form>
+        
+//     )
+// }
