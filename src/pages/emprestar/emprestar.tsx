@@ -4,9 +4,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import Input from 'components/formulario/input';
 import Button from 'components/formulario/button';
+import IEmprestimos from 'Interfaces/IEmprestimos';
 
 export default function Emprestar(){
-    
     const schema = yup.object({
         idAluno: yup.number().positive("Número inválido").integer("Número inválido").required("Campo obrigatório"),
         name: yup.string().required("Campo obrigatório"),
@@ -15,25 +15,14 @@ export default function Emprestar(){
         tituloLivro: yup.string()
       }).required();
 
-    type InputTypes = {
-        idAluno?:number,
-        name?:string,
-        idLivro?:string,
-        turmaAluno?:string,
-        tituloLivro?:string,
-        editora?:string,
-        dataLancamento?:Date,
-        autor?:string,
-    };
-
-    const {register, handleSubmit, reset, formState:{errors}} = useForm<InputTypes>({
+    const {register, handleSubmit, reset, formState:{errors}} = useForm<IEmprestimos>({
         mode:'onChange',
         resolver: yupResolver(schema),
         
     });
-    function onSubmit (data:InputTypes){
-        reset();
+    function onSubmit (data:IEmprestimos){
         console.log(data);
+        reset();
     }
 
     return(

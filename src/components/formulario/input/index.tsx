@@ -1,25 +1,16 @@
 import styles from './Input.module.scss';
 import {UseFormRegister, Path} from 'react-hook-form';
 import classnames from 'classnames';
+import IEmprestimos from 'Interfaces/IEmprestimos';
 
-interface Dados {
-    idAluno?:number,
-    name?:string,
-    idLivro?:string,
-    turmaAluno?:string,
-    tituloLivro?:string, 
-    editora?:string, 
-    autor?:string, 
-    dataLancamento?:Date, 
-}
-type InputTypes = {
-    label:Path<Dados>;
+
+interface InputTypes  {
+    label:Path<IEmprestimos>,
+    register:UseFormRegister<IEmprestimos>,
     ph:string,
     type:string,
-    register:UseFormRegister<Dados>,
     error?:boolean,
 }
-
 export default function Input({register, label, ph , type,error}:InputTypes){
     return(
         <div className={styles.form}>

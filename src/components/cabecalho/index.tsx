@@ -30,7 +30,7 @@ export default function Cabecalho(props:any){
 				</Dropdown.Toggle>
 			<Dropdown.Menu variant="dark">
 				{link.map((item, index)=>(
-					<Dropdown.Item><li key={index} className={style.menu__link}><Link  to={item.to}>{item.label}</Link></li></Dropdown.Item>	
+					<Dropdown.Item key={index} ><li className={style.menu__link}><Link  to={item.to}>{item.label}</Link></li></Dropdown.Item>	
 				))}
 				</Dropdown.Menu>
 			</Dropdown>
