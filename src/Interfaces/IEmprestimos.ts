@@ -1,8 +1,8 @@
 export default interface IEmprestimos  {
-  idAluno:number,
-  name:string,
-  idLivro:string,
+  matriculaAluno:number,
+  nomeAluno?:string,
   turmaAluno:string,
+  idLivro:string,
   tituloLivro:string,
   editora?:string,
   dataLancamento?:Date,

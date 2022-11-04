@@ -32,8 +32,8 @@ export default function Cadastrar(){
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
             <fieldset className={styles.form__field}>
 
-                <Input register={register} label="idLivro" ph='Informe o id do livro' type="number" error={errors.idLivro ? true:false}/>
-                <span className={styles.form__field__errorMessage}>{errors.idLivro?.message}</span>
+                <Input register={register} label="matriculaAluno" ph='Informe o id do livro' type="number" error={errors.matriculaAluno ? true:false}/>
+                <span className={styles.form__field__errorMessage}>{errors.matriculaAluno?.message}</span>
 
                 <Input register={register} label="tituloLivro" ph='Informe o titulo' type="text" error={errors.tituloLivro ? true:false}/>
                     <span className={styles.form__field__errorMessage}>{errors.tituloLivro?.message}</span>

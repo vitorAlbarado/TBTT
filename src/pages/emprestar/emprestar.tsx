@@ -8,8 +8,8 @@ import IEmprestimos from 'Interfaces/IEmprestimos';
 
 export default function Emprestar(){
     const schema = yup.object({
-        idAluno: yup.number().positive("Número inválido").integer("Número inválido").required("Campo obrigatório"),
-        name: yup.string().required("Campo obrigatório"),
+        matriculaAluno: yup.number().positive("Número inválido").integer("Número inválido").required("Campo obrigatório"),
+        nomeAluno: yup.string().required("Campo obrigatório"),
         turmaAluno: yup.string().required("Campo obrigatório"),
         idLivro: yup.string().required("Campo obrigatório"),
         tituloLivro: yup.string()
@@ -29,11 +29,11 @@ export default function Emprestar(){
 
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
             <fieldset className={styles.form__field}>
-                <Input register={register} label="idAluno" ph='Informe o id do aluno' type="text" error={errors.idAluno ? true:false}/>
-                <span className={styles.form__field__errorMessage}>{errors.idAluno?.message}</span>
+                <Input register={register} label="matriculaAluno" ph='Informe o id do aluno' type="text" error={errors.matriculaAluno ? true:false}/>
+                <span className={styles.form__field__errorMessage}>{errors.matriculaAluno?.message}</span>
 
-                <Input register={register} label="name" ph='Informe o nome do aluno' type="text" error={errors.name ? true:false}/>
-                    <span className={styles.form__field__errorMessage}>{errors.name?.message}</span>
+                <Input register={register} label="nomeAluno" ph='Informe o nome do aluno' type="text" error={errors.nomeAluno ? true:false}/>
+                    <span className={styles.form__field__errorMessage}>{errors.nomeAluno?.message}</span>
 
                 <Input register={register} label="turmaAluno" ph='Informe a turma do aluno' type="text" error={errors.turmaAluno ? true:false}/>
                     <span className={styles.form__field__errorMessage}>{errors.turmaAluno?.message}</span>

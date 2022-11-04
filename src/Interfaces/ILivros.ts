@@ -2,6 +2,6 @@ export default interface ILivros {
   idLivro:string,
   tituloLivro:string,
   editora?:string,
-  dataLancamento?:Date,
+  dataLancamento?:Date | string,
   autor?:string,
 }

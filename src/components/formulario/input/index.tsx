@@ -2,6 +2,7 @@ import styles from './Input.module.scss';
 import {UseFormRegister, Path} from 'react-hook-form';
 import classnames from 'classnames';
 import IEmprestimos from 'Interfaces/IEmprestimos';
+import ILivros from 'Interfaces/ILivros';
 
 
 interface InputTypes  {
