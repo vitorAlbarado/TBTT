@@ -5,14 +5,16 @@
  	width: 100%;
  	box-sizing: border-box;
  	font-family: $fonte-kanit;
-	 padding-bottom: 0.5em;
+	 
 	 background-color: $cor-principal;
-	 text-align: center;
+	 display: flex;
+	 justify-content: space-around;
+	 align-items: center;
 	 .dropDown{
 		display: none;
 	 }
 	&__img{
-		width: 120px;
+		width: 100px;
 	}
 }
 .menu{
@@ -22,6 +24,9 @@
 		justify-content: center;
 		align-items: center;
 		gap: 2em;
+		a{
+			text-decoration: none;
+		}
 	}
 	&__link{
 		a{
@@ -29,20 +34,18 @@
 			text-decoration: none;
 			color: white;
 			transition: 0.51s all;
-			font-size: 1.2em;
-			&:hover{
-				//color: black;
-				transition: 0.51s all;
-				font-size: 1.5em;
-				font-family: $fonte-kanit;
-				border-bottom: 1px solid white;
-			}
+			font-size: 1em;
 		}
-		&__ativo{
-			border-bottom: 2px solid black;
-		}
+		
 	}
+	a:hover{
+			color: black;
+			transition: 0.51s all;
+			font-size: 1.2em;
+	}
+	
 }
+
 
 @media (max-width: $mobile) {
 	.header{
