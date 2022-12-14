@@ -25,11 +25,11 @@ export default function Rotas(){
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<PaginaPadrao/>}>
-                <Route path="/home" element={<Home/>} />
-                <Route path="/emprestar" element={<Emprestar/>}/>
-                <Route path="/cadastrar" element={<Cadastrar/>}/>
-                <Route path="/acervo" element={<Acervo/>}/>
-                <Route path="/historico" element={<Historico/>}/>
+                <Route path="home" element={<Home/>} />
+                <Route path="emprestar" element={<Emprestar/>}/>
+                <Route path="cadastrar" element={<Cadastrar/>}/>
+                <Route path="acervo" element={<Acervo/>}/>
+                <Route path="historico" element={<Historico/>}/>
                 </Route>
             </Routes>
         </BrowserRouter>
