@@ -1,13 +1,14 @@
 import styles from './Input.module.scss';
 import {UseFormRegister, Path} from 'react-hook-form';
 import classnames from 'classnames';
-import IEmprestimos from 'Interfaces/IEmprestimos';
-import ILivros from 'Interfaces/ILivros';
+import FormData from 'Interfaces/FormData';
+
+
 
 
 interface InputTypes  {
-    label:Path<IEmprestimos>,
-    register:UseFormRegister<IEmprestimos>,
+    label:Path<FormData>,
+    register:UseFormRegister<FormData>,
     ph:string,
     type:string,
     error?:boolean,

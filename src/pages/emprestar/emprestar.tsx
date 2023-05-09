@@ -1,48 +1,95 @@
 import styles from '../../components/formulario/Formulario.module.scss';
+import style from '../../components/formulario/input/Input.module.scss';
 import {useForm} from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
-import Input from 'components/formulario/input';
 import Button from 'components/formulario/button';
-import IEmprestimos from 'Interfaces/IEmprestimos';
+import FormData from 'Interfaces/FormData';
+import classnames from 'classnames';
+import axios from 'axios';
 
 export default function Emprestar(){
     const schema = yup.object({
-        matriculaAluno: yup.number().positive("Número inválido").integer("Número inválido").required("Campo obrigatório"),
-        nomeAluno: yup.string().required("Campo obrigatório"),
-        turmaAluno: yup.string().required("Campo obrigatório"),
+        idAluno: yup.number().positive("Número inválido").integer("Número inválido").required("Campo obrigatório"),
+        nomeAluno: yup.string(),
         idLivro: yup.string().required("Campo obrigatório"),
         tituloLivro: yup.string()
       }).required();
 
-    const {register, handleSubmit, reset, formState:{errors}} = useForm<IEmprestimos>({
+    type Emprestimo = {
+        idAluno:number,
+        idLivro:number,
+        data:Date,
+        prazo:number,
+
+    }  
+    const {register, handleSubmit, reset, formState:{errors}} = useForm<Emprestimo>({
         mode:'onChange',
         resolver: yupResolver(schema),
         
     });
-    function onSubmit (data:IEmprestimos){
-        console.log(data);
-        reset();
+    function onSubmit (data:Emprestimo){
+       
+        data.data = new Date()
+
+        axios({
+            method:'POST',
+            headers:{'content-type': 'application/json'},
+            data:JSON.stringify(data),
+            url:'http://localhost:8080/emprestimos'
+        })
+        .then(reponse => console.log(reponse.data))
+        .catch(error => console.log(error.response.data.message))
+        console.log(data)
+        
     }
 
     return(
 
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
             <fieldset className={styles.form__field}>
-                <Input register={register} label="matriculaAluno" ph='Informe o id do aluno' type="text" error={errors.matriculaAluno ? true:false}/>
-                <span className={styles.form__field__errorMessage}>{errors.matriculaAluno?.message}</span>
+                <div className={style.form}>
+                <input 
+                    className={classnames({
+                        [style.form__input]:true,
+                        [style.form__input__error]:errors.idAluno?.message
+                    })}
+                    {...register("idAluno")}
+                    placeholder="Informe a matrícula do Aluno"
+                    type='text'
+                    />
+                <input className={style.form__input} type="text"placeholder='Nome do Aluno' />
+                </div>
+                <span className={styles.form__field__errorMessage}>{errors.idAluno?.message}</span>
 
-                <Input register={register} label="nomeAluno" ph='Informe o nome do aluno' type="text" error={errors.nomeAluno ? true:false}/>
-                    <span className={styles.form__field__errorMessage}>{errors.nomeAluno?.message}</span>
+                <div className={style.form}>
+                <input 
+                    className={classnames({
+                        [style.form__input]:true,
+                        [style.form__input__error]:errors.idLivro?.message
+                    })}
+                    {...register("idLivro")}
+                    placeholder="Informe o código do Livro"
+                    type='text'
+                    />
+                    <input className={style.form__input} type="text"placeholder='Título do livro' />
+                </div>
+                <span className={styles.form__field__errorMessage}>{errors.idLivro?.message}</span>
 
-                <Input register={register} label="turmaAluno" ph='Informe a turma do aluno' type="text" error={errors.turmaAluno ? true:false}/>
-                    <span className={styles.form__field__errorMessage}>{errors.turmaAluno?.message}</span>
+                <div className={style.form}>
+                <input 
+                    className={classnames({
+                        [style.form__input]:true,
+                        [style.form__input__error]:errors.idLivro?.message
+                    })}
+                    {...register("prazo")}
+                    placeholder="Informe o prazo"
+                    type='text'
+                    />
                     
-                <Input register={register} label="idLivro" ph='Informe o id do livro' type="text" error={errors.idLivro ? true:false}/>
-                    <span className={styles.form__field__errorMessage}>{errors.idLivro?.message}</span>
+                </div>
 
-                <Input register={register} label="tituloLivro" ph='Informe o titulo do livro' type="text" error={errors.tituloLivro ? true:false}/>
-                    <span className={styles.form__field__errorMessage}>{errors.tituloLivro?.message}</span>
+                
                 <Button value="Emprestar"/>
             </fieldset>
         </form>
