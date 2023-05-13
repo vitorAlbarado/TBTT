@@ -1,50 +1,77 @@
 import styles from './Acervo.module.scss';
 import axios from 'axios';
-
 import { useEffect, useState } from 'react';
+import { Pagination } from 'react-bootstrap';
+import Table from 'react-bootstrap/esm/Table';
 
-import { type } from 'os';
-
-type ILivros ={
-	titulo?:string,
-	autor?:string,
-	genero?:string,
-  }
+type ILivros = {
+	titulo?: string,
+	autor?: string,
+	genero?: string,
+}
 
 export default function Acervo() {
 	const [acervo, setAcervo] = useState<ILivros[]>([]);
-	const [busca, setBusca] = useState(false);
+	const [page, setPage] = useState(0);
+	const [totalPages, setTotalPages] = useState(0)
+	const [active, setActive] = useState(0);
+	let items = [];
 
-	 function buscaLivros(){
-			axios.get('http://localhost:8080/livros')
-			.then(resposta => setAcervo(resposta.data.content))
-			.catch(() => alert("Não foi possivel buscar os dados"))
-		}
-		
-		
 
+
+	useEffect(() => {
+		const fetchData = async () => {
+			const response = await axios.get('http://localhost:8080/livros', {
+				params: {
+					page: page
+				}
+			});
+			setAcervo(response.data.content);
+			setTotalPages(response.data.totalPages);
+			setActive(response.data.pageable.pageNumber);
+			console.log(response);
+			console.log(response.data.totalPages)
+			console.log(active)
+
+		};
+		fetchData();
+	}, [page]);
+
+	for (let number = 0; number < 3; number++) {
+		items.push(
+		  <Pagination.Item key={number} active={number === active} onClick={()=>setPage(number)}>
+			{number+1}
+		  </Pagination.Item>,
+		);
+	  }
 	return (
 		<section className={styles.container}>
-			<input className={styles.container__input}  id="pesquisar__input" type="text" placeholder="Informe o ID" />
-			<button className={styles.container__pesquisar} type="submit" onClick={()=>buscaLivros()}>Pesquisar</button>
-			<table className={styles.container__tabela}>
-				<thead className={styles.container__tabela__thead}>
-
+			<div className={styles.container__pesquisar}>
+				<input id="pesquisar__input" type="text" placeholder="Informe o ID" />
+				<button className={styles.container__pesquisar__button} type="submit">Buscar</button>
+			</div>
+			<Table striped bordered hover size='sm' className={styles.container__table}>
+				<thead className={styles.container__thead}>
 					<tr>
-						<th >Titulo Livro</th>
+						<th>Título</th>
 						<th >Autor</th>
-						<th >Genero</th>
+						<th >Gênero</th>	
+						<th >Status</th>
 					</tr>
 				</thead>
-				<tbody className="tabela-historico__body">
-				    {acervo.map((item, index) => <tr key={index}>
+				<tbody className={styles.container__table__tbody}>
+					{acervo.map((item, index) => <tr key={index}>
 						<td>{item.titulo}</td>
 						<td>{item.autor}</td>
 						<td>{item.genero}</td>
+						<td>-</td>
 					</tr>
 					)}
 				</tbody>
-			</table>
+			</Table>
+			<div className={styles.container_pagination}>
+				<Pagination>{items}</Pagination>
+			</div>
 		</section>
 	)
 }
