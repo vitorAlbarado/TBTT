@@ -5,6 +5,8 @@ import Acervo from "../acervo/acervo";
 import Historico from "../historico/historico";
 import Home from "pages/home/home";
 import PaginaPadrao from "pages/paginaPadrao/paginaPadrao";
+import Cabecalho from "components/cabecalho";
+import Footer from "components/footer/footer";
 
 export default function Rotas(){
     return(
@@ -23,15 +25,16 @@ export default function Rotas(){
         // </main>
         <main className="MainContainer">
         <BrowserRouter>
+                <Cabecalho/>
             <Routes>
-                <Route path="/" element={<PaginaPadrao/>}>
-                <Route path="home" element={<Home/>} />
+                <Route path="/" element={<Home/>} />
                 <Route path="emprestar" element={<Emprestar/>}/>
                 <Route path="cadastrar" element={<Cadastrar/>}/>
                 <Route path="acervo" element={<Acervo/>}/>
                 <Route path="historico" element={<Historico/>}/>
-                </Route>
+                
             </Routes>
+                <Footer/>
         </BrowserRouter>
         </main>
     )
