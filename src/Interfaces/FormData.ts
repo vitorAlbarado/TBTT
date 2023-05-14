@@ -5,5 +5,8 @@ export default interface FormData  {
     idAluno?:number,
     idLivro?:string,
     data:string,
-    prazo?:number
+    prazo?:number,
+    nome:string,
+    turma:string,
+    matricula:number
   };
