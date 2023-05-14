@@ -1,17 +1,24 @@
 import axios from 'axios';
-import IEmprestimos from 'Interfaces/IEmprestimos';
 import { useEffect, useState } from 'react';
 import styles from '../acervo/Acervo.module.scss';
+import { type } from 'os';
 
-export default function Historico() {
-	const [emprestimos, setEmprestimos] = useState<IEmprestimos[]>([])
+type IEmprestimos = {
+    idAluno?:number,
+    idLivro?:number,
+    data?:Date,
+    prazo?:number
+  }
 
-	useEffect(() => {
-		axios.get<IEmprestimos[]>('https://jsonurl.com/_sO2')
-			.then((resposta) => {
-				setEmprestimos(resposta.data)
-			})
-	}, [])
+export default function Histotico() {
+	const [emprestimos, setEmprestimos] = useState<IEmprestimos[]>([]);
+	const [busca, setBusca] = useState(false);
+
+	 function buscaLivros(){
+			axios.get('http://localhost:8080/livros')
+			.then(resposta => setEmprestimos(resposta.data.content))
+			.catch(() => alert("Não foi possivel buscar os dados"))
+		}
 
 	return (
 		<section className={styles.container}>
@@ -29,11 +36,11 @@ export default function Historico() {
 				</thead>
 				<tbody className="tabela-historico__body">
 					{emprestimos.map((item, index) => <tr key={index}>
-						<td>{item.matriculaAluno}</td>
-						<td>{item.nomeAluno}</td>
-						<td>{item.turmaAluno}</td>
+						{/*<td>{item.idAluno}</td>*/}
+						
+						
 						<td>{item.idLivro}</td>
-						<td>{item.tituloLivro}</td>
+						
 					</tr>)}
 				</tbody>
 			</table>
