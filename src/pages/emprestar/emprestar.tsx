@@ -44,7 +44,7 @@ export default function Emprestar() {
       url: 'http://localhost:8080/emprestimos'
     })
       .then((response) => {
-        console.log(response)
+        console.log(response.data)
         setStatus(response.status)
         setErro(response.data)
         reset();
