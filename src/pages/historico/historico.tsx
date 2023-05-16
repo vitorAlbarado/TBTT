@@ -2,41 +2,51 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import styles from '../acervo/Acervo.module.scss';
 import IEmprestimos from 'Interfaces/Emprestimos/IEmprestimos';
-import { Table } from 'react-bootstrap';
+import { Pagination, Table } from 'react-bootstrap';
+import verificaEmprestimos from './VerificaEmprestimo';
 
 export default function Histotico() {
 
   const [page, setPage] = useState(0);
   const [emprestimos, setEmprestimos] = useState<IEmprestimos[]>([]);
+  const [totalPages, setTotalPages] = useState(0)
+  const [active, setActive] = useState(0);
+  let items = [];
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get('http://localhost:8080/emprestimos', {
         params: {
-          page: page
+          page: page,
+          
         }
       })
-      
+      setTotalPages(response.data.totalPages);
+      setActive(response.data.pageable.pageNumber);
+      console.log(response)
+      console.log(totalPages)
+      console.log(active)
       const emprestimos: IEmprestimos[] = response.data.content;
-      const dados = emprestimos.map(e => {
-        const date = new Date(e.data)
-        const dataAtual = new Date;
-        const dataDevolucao = new Date(date.getTime() + (e.prazo*86400000))
-        const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
-        if(dataDevolucao > dataAtual){
-          return { ...e, data: formattedDate, status: true };
-        }
-        return { ...e, data: formattedDate, status: false };
-      })
+      const dados = verificaEmprestimos(emprestimos);
       setEmprestimos(dados);
     };
     fetchData();
   }, [page])
 
+  for (let number = 0; number < totalPages; number++) {
+    items.push(
+      <Pagination.Item key={number} active={number === active} onClick={() => setPage(number)}>
+        {number + 1}
+      </Pagination.Item>,
+    );
+  }
   return (
     <section className={styles.container}>
-      <input className={styles.container__input} id="pesquisar__input" type="text" placeholder="Informe o ID" />
-      <input className={styles.container__pesquisar} type="submit" value="Pesquisar" />
+      
+      <div className={styles.container__pesquisar}>
+        <input id="pesquisar__input" type="text" placeholder="Informe o ID" />
+        <button className={styles.container__pesquisar__button} type="submit">Buscar</button>
+      </div>
 
       <Table striped bordered hover size='sm' className={styles.container__tabela}>
         <thead className={styles.container__tabela__thead}>
@@ -64,6 +74,9 @@ export default function Histotico() {
           </tr>)}
         </tbody>
       </Table>
+      <div className={styles.container_pagination}>
+        <Pagination>{items}</Pagination>
+      </div>
     </section>
   )
 }
