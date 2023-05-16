@@ -2,15 +2,13 @@
 @import '../../styles/breakPoints';
 
 .container {
-    margin-top: 2em;
-    height: 75vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     &__pesquisar {
         align-self: flex-start;
-        margin-bottom: 2em;
+        margin:2em;
         border: none;
         &__button{
             color: white;
@@ -18,7 +16,6 @@
             border-radius: 2px;
             background-color: $cor-principal;
         }
-
     }
        
     &__thead {
@@ -34,5 +31,6 @@
 .container_pagination {
     align-self: flex-end;
     margin-top: auto;
+    margin-right: 1em;
     
 }

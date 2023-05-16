@@ -11,14 +11,13 @@ type ILivros = {
 }
 
 export default function Acervo() {
+
   const [acervo, setAcervo] = useState<ILivros[]>([]);
   const [page, setPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0)
   const [active, setActive] = useState(0);
   let items = [];
 
-
-  
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get('http://localhost:8080/livros', {
@@ -29,18 +28,14 @@ export default function Acervo() {
       setAcervo(response.data.content);
       setTotalPages(response.data.totalPages);
       setActive(response.data.pageable.pageNumber);
-      console.log(response);
-      console.log(response.data.totalPages)
-      console.log(active)
-
     };
     fetchData();
   }, [page]);
 
-  for (let number = 0; number < 3; number++) {
+  for (let number = 0; number < totalPages; number++) {
     items.push(
-      <Pagination.Item key={number} active={number === active} onClick={()=>setPage(number)}>
-        {number+1}
+      <Pagination.Item key={number} active={number === active} onClick={() => setPage(number)}>
+        {number + 1}
       </Pagination.Item>,
     );
   }

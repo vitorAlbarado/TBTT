@@ -1,5 +1,5 @@
 # <div align="center">THE BOOKS ON THE TABLE</div>
-<div align="center"> <img src="https://user-images.githubusercontent.com/63800945/199794257-2dbea800-2cbf-4891-88bf-e3a34b3e2e39.gif" /></div>
+<div align="center"> <img src="https://github.com/vitorAlbarado/TBTT/assets/63800945/cb659ff0-382c-46e7-9b0a-b17839143d64" /></div>
 
 ## 🔖 Sobre o projeto
 Tbbt é um sistema de controle de empréstimos e acervo para bibliotecas, prático, simples e útil.
