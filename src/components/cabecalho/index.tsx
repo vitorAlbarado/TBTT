@@ -44,7 +44,7 @@ export default function Cabecalho(props: any) {
       <a href="/"><img className={style.header__img} src={logo} alt="Logo da Empresa" /></a>
       <nav className={style.menu}>
         {link.map((item, index) =>
-          <NavLink style={({ isActive }) => ({ color: isActive ? 'black' : '', fontSize: isActive ? '1.2em' : '' })} to={item.to} end>{item.label}</NavLink>
+          <NavLink style={({ isActive }) => ({ color: isActive ? 'black' : '', fontSize: isActive ? '1.2em' : '' })}key={index} to={item.to} end>{item.label}</NavLink>
         )}
       </nav>
 

@@ -34,7 +34,6 @@ export default function Rotas(){
                 <Route path="historico" element={<Historico/>}/>
                 
             </Routes>
-                <Footer/>
         </BrowserRouter>
         </main>
     )
