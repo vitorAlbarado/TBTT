@@ -22,11 +22,19 @@
         font-size: 1.1em;
         font-weight: 700;
         text-align: center;
+        color: white;
+        border-bottom: 5px solid $cor-secundaria;
+        background-color: $cor-principal;
         @media(max-width: $mobile) {
             font-size: 1em;
         }
     }
 }
+.button_check{
+    border: none;
+    background-color: transparent;
+}
+
 
 .container_pagination {
     align-self: flex-end;
