@@ -7,10 +7,10 @@ export default function verificaEmprestimos(emprestimos:IEmprestimos[]){
         const dataAtual = new Date;
         const dataDevolucao = new Date(date.getTime() + (e.prazo*86400000))
         const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
-        if(dataDevolucao > dataAtual){
-          return { ...e, data: formattedDate, status: true };
+        if(dataDevolucao < dataAtual && e.ativo){
+          return { ...e, data: formattedDate, atrasado: true };
         }
-        return { ...e, data: formattedDate, status: false };
+        return { ...e, data: formattedDate, atrasado: false };
       })
       return dados;
 }

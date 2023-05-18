@@ -1,4 +1,5 @@
 export default interface IEmprestimos {
+    id:number,
     matricula:string,
     nome:string,
     turma:string,
@@ -6,7 +7,7 @@ export default interface IEmprestimos {
     titulo:string,
     data:string,
     prazo:number,
-    status:boolean,
+    atrasado:boolean,
     ativo:boolean
     
 
