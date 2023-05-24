@@ -7,7 +7,7 @@
     align-items: center;
     text-align: center;
     &__pesquisar {
-        align-self: flex-start;
+        display: flex;
         margin:2em;
         border: none;
         &__button{

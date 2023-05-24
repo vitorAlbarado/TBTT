@@ -18,7 +18,8 @@ export default function Emprestar() {
     idAluno: yup.number().positive("Número inválido").integer("Número inválido").required("Campo obrigatório"),
     nomeAluno: yup.string(),
     idLivro: yup.string().required("Campo obrigatório"),
-    tituloLivro: yup.string()
+    tituloLivro: yup.string(),
+    prazo: yup.number().positive("Número inválido").integer("Número inválido").required("Campo obrigatório").min(1,"Prazo minimo 1 dia").max(60,"Prazo maximo 60 dias")
   }).required();
 
   type Emprestimo = {
@@ -36,7 +37,7 @@ export default function Emprestar() {
   function onSubmit(data: Emprestimo) {
 
     data.data = new Date()
-
+    console.log(new Date())
     axios({
       method: 'POST',
       headers: { 'content-type': 'application/json' },
@@ -100,6 +101,7 @@ export default function Emprestar() {
             placeholder="Informe o prazo"
             type='text'
           />
+          <span className={styles.form__field__errorMessage}>{errors.prazo?.message}</span>
 
         </div>
         
