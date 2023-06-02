@@ -7,63 +7,64 @@ import verificaEmprestimos from './VerificaEmprestimo';
 import { FaCheckSquare } from "react-icons/fa";
 import Modal from 'react-bootstrap/Modal';
 
-
-
 export default function Histotico() {
 
   const [page, setPage] = useState(0);
   const [emprestimos, setEmprestimos] = useState<IEmprestimos[]>([]);
   const [totalPages, setTotalPages] = useState(0)
   const [active, setActive] = useState(0);
-
   const [show, setShow] = useState(false);
   const [confimarEnvio, setConfimarEnvio] = useState(false);
   const [id, setId] = useState(0);
   const handleClose = () => setShow(false);
   const [atualizarLista, setAtualizarLista] = useState(1);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [busca, setBusca] = useState(0);
 
+
   let items = [];
+
+  if (confimarEnvio) {
+    console.log(page)
+    console.log(atualizarLista)
+    axios.put('http://localhost:8080/emprestimos', {
+      id: id,
+      ativo: false
+    })
+      .then(response => {
+        setConfimarEnvio(false)
+        setShow(false)
+        setAtualizarLista(atualizarLista+1)
+      }
+      )
+  }
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       const response = await axios.get('http://localhost:8080/emprestimos', {
         params: {
-          page: page,
+          page: page
         }
       })
-      setLoading(false)
-
-      setTotalPages(response.data.totalPages);
-      setActive(response.data.pageable.pageNumber);
-      console.log(response)
-      const emprestimos: IEmprestimos[] = response.data.content;
-      const dados = verificaEmprestimos(emprestimos);
-      setEmprestimos(dados);
+        .then((response) => {
+          setLoading(false)
+          setTotalPages(response.data.totalPages);
+          setActive(response.data.pageable.pageNumber);
+          const emprestimos: IEmprestimos[] = response.data.content;
+          const dados = verificaEmprestimos(emprestimos);
+          setEmprestimos(dados);
+        })
+        .catch(error => console.log(error))
     };
     fetchData();
-  }, [page, atualizarLista])
+  }, [page,atualizarLista])
 
   const handleShow = (id: number) => {
     setShow(true);
     setId(id);
     console.log(id)
   }
-
-  useEffect(() => {
-    axios.put('http://localhost:8080/emprestimos', {
-      id: id,
-      ativo: false
-    })
-      .then(response => console.log(response))
-      .catch(error => console.log(error))
-    setConfimarEnvio(false)
-    setShow(false)
-    setAtualizarLista(atualizarLista + 1)
-  }, [confimarEnvio])
-
 
 
 
@@ -74,18 +75,7 @@ export default function Histotico() {
       </Pagination.Item>,
     );
   }
-  const realizarBusca=(event: React.FormEvent<HTMLFormElement>)=>{
-    event.preventDefault()
-    if(busca){
-      
-      axios.get(`http://localhost:8080/emprestimos/${busca}`)
-      .then(response => {
-        setEmprestimos([response.data])
-        console.log(emprestimos)
-        
-      })
-    }
-  }
+
   return (
     <section className={styles.container}>
       <Modal show={show} onHide={handleClose}>
@@ -99,9 +89,9 @@ export default function Histotico() {
         </Modal.Footer>
       </Modal>
 
-      <Form onSubmit={realizarBusca} >
+      <Form >
         <div className={styles.container__pesquisar}>
-          <Form.Control type="number" placeholder="Informe o ID" value={busca} onChange={e =>setBusca(parseFloat(e.target.value))}/>
+          <Form.Control type="number" placeholder="Informe o ID" value={busca} onChange={e => setBusca(parseFloat(e.target.value))} />
           <Button type="submit">
             Buscar
           </Button>
@@ -134,11 +124,10 @@ export default function Histotico() {
             <td>{item.prazo}</td>
             <td>{item.atrasado && item.ativo ? 'Atrasado' : item.ativo ? '' : 'Entregue'}</td>
             <td><button className={styles.button_check} onClick={() => handleShow(item.id)}>{item.ativo && <FaCheckSquare />}</button></td>
-
           </tr>)}
-          {loading && <Spinner animation='grow' />}
         </tbody>
       </Table>
+      {loading && <div><Spinner animation="grow"></Spinner></div>}
       <div className={styles.container_pagination}>
         <Pagination>{items}</Pagination>
       </div>
